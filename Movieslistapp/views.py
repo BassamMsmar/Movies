@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import MoviesInfo, Review
 from .utils import average_rating
 
+from .models import Publisher
+from .forms import AddFormPublisher
+
 
 # Create your views here.
 
@@ -21,3 +24,7 @@ def movies_list(request):
 
     context = {'movie_list': movie_list,}
     return render(request, 'movieslist/movieslist.html', context)
+
+def publisher_add_edit(request):
+    form = AddFormPublisher()
+    return render(request, 'movieslist/add_edit_publisher.html', {'form':form})
